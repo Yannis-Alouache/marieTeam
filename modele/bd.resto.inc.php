@@ -5,7 +5,7 @@ function getRestoByIdR($idR) {
     try {
         $cnx = connexionPDO();
         $req = $cnx->prepare("select * from resto where idR=:idR");
-        $req->bindValue(':idR', $idR, PDO::PARAM_INT);
+        v
 
         $req->execute();
 

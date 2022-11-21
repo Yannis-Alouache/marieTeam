@@ -22,33 +22,58 @@ function getUtilisateurs() {
     return $resultat;
 }
 
-function getUtilisateurByMailU($mailU) {
-    $resultat = array();
+function getUtilisateurByMail($mail) {
+    $user = null;
 
     try {
-        $cnx = connexionPDO();
-        $req = $cnx->prepare("select * from utilisateur where mailU=:mailU");
-        $req->bindValue(':mailU', $mailU, PDO::PARAM_STR);
-        $req->execute();
-        
-        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+        $connexion = connexionPDO();
+        $query = "SELECT * FROM `utilisateur` where utilisateur.mail = ?";
+        $stmt = $connexion->prepare($query);
+
+        $stmt->execute([$mail]);
+        $user = $stmt->fetch();
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
     }
-    return $resultat;
+    return $user;
 }
 
 
-if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-    // prog principal de test
-    header('Content-Type:text/plain');
 
-    echo "getUtilisateurs() : \n";
-    print_r(getUtilisateurs());
+function createUser($mail, $mdp, $nom, $prenom) {
+    try {
+        $connexion = connexionPDO();
+        $user = getUtilisateurByMail($mail);
 
-    echo "getUtilisateurByMailU('mathieu.capliez@gmail.com') : \n";
-    print_r(getUtilisateurByMailU("mathieu.capliez@gmail.com"));
+        if ($user != null) {
+            return "Cette adresse mail est déjà affilié à un compte";
+        }
 
+        $hashmdp = password_hash($mdp, PASSWORD_DEFAULT);
+    
+        $sql = "INSERT INTO utilisateur (mail, mdp, nom, prenom)
+        VALUES (?, ?, ?, ?)";
+        $stmt = $connexion->prepare($sql);
+
+        $stmt->execute([$mail, $hashmdp, $nom, $prenom]);
+    } catch(PDOException $e){
+        die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    }
+    return "operation effectué";
 }
+
+
+function connexion($mail, $mdp) {
+    $user = getUtilisateurByMail($mail);
+    if(password_verify($mdp, $user["mdp"])) {
+        // If the password inputs matched the hashed password in the database
+        // Do something, you know... log them in.
+        echo "psahtick";
+    }
+    else{
+        return "ERROR";
+    }
+}
+
 ?>

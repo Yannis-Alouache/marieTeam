@@ -66,14 +66,25 @@ function createUser($mail, $mdp, $nom, $prenom) {
 
 function connexion($mail, $mdp) {
     $user = getUtilisateurByMail($mail);
-    if(password_verify($mdp, $user["mdp"])) {
-        // If the password inputs matched the hashed password in the database
-        // Do something, you know... log them in.
-        echo "psahtick";
+
+    if ($user != false) {
+        if(password_verify($mdp, $user["mdp"])) {
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            $_SESSION["loggedIn"] = true;
+            $_SESSION["id"] = $user["id"];
+            $_SESSION["username"] = $user["nom"]." ".$user["prenom"];
+            return $_SESSION;
+        }
+        else{
+            return "Mauvais mot de passe";
+        }
     }
-    else{
-        return "ERROR";
+    else {
+        return "Compte inexistant !";
     }
+
 }
 
 ?>

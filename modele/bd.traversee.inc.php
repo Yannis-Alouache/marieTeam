@@ -18,7 +18,7 @@
 
 
 
-    function get_traversee() {
+    function get_traversees() {
         $resultat = array();
 
         try {

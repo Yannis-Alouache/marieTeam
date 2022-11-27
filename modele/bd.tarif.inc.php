@@ -16,6 +16,27 @@
         return "Succès ! : Tarif ajouté à la base";
     }
 
+    function get_tarifs() {
+        $resultat = array();
+
+        try {
+            $connexion = connexionPDO();
+            $query = "SELECT * FROM tarif";
+            $stmt = $connexion->prepare($query);
+            $stmt->execute();
+    
+            $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
 
 
 ?>

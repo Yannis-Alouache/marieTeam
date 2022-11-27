@@ -104,6 +104,14 @@ function connexion($mail, $mdp) {
     }
 }
 
+function deconnexion() {
+    if (isset($_SESSION)) {
+        unset($_SESSION["mail"]);
+        unset($_SESSION["mdp"]);
+        unset($_SESSION["username"]);
+    }
+}
+
 function isLoggedIn() {
     $isLogged = false;
 

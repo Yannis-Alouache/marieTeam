@@ -22,6 +22,24 @@ function getUtilisateurs() {
     return $resultat;
 }
 
+function getUtilisateurById($id) {
+    $user = null;
+    $id = intval($id);
+
+    try {
+        $connexion = connexionPDO();
+        $query = "SELECT * FROM `utilisateur` where utilisateur.id = ?";
+        $stmt = $connexion->prepare($query);
+
+        $stmt->execute([$id]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $user;
+}
+
 function getUtilisateurByMail($mail) {
     $user = null;
 
@@ -72,8 +90,8 @@ function connexion($mail, $mdp) {
             if (!isset($_SESSION)) {
                 session_start();
             }
-            $_SESSION["loggedIn"] = true;
-            $_SESSION["id"] = $user["id"];
+            $_SESSION["mail"] = $user["mail"];
+            $_SESSION["mdp"] = $user["mdp"];
             $_SESSION["username"] = $user["nom"]." ".$user["prenom"];
             return $_SESSION;
         }
@@ -84,7 +102,22 @@ function connexion($mail, $mdp) {
     else {
         return "Compte inexistant !";
     }
+}
 
+function isLoggedIn() {
+    $isLogged = false;
+
+    if (!isset($_SESSION)) {
+        return $isLogged;
+    }
+
+    if (isset($_SESSION["mail"]) && isset($_SESSION["mdp"])) {
+        $user = getUtilisateurByMail($_SESSION["mail"]);
+        if ($_SESSION["mail"] == $user["mail"] && $_SESSION["mdp"] == $user["mdp"]) {
+            $isLogged = true;
+        }
+    }
+    return $isLogged;
 }
 
 ?>

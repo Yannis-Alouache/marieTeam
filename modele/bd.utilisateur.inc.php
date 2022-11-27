@@ -49,7 +49,7 @@ function getUtilisateurByMail($mail) {
         $stmt = $connexion->prepare($query);
 
         $stmt->execute([$mail]);
-        $user = $stmt->fetch();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();

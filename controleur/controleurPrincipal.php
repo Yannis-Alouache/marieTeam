@@ -2,7 +2,7 @@
 
 function controleurPrincipal($action){
     $lesActions = array();
-    $lesActions["defaut"] = "acceuil.php";
+    $lesActions["defaut"] = "accueil.php";
     $lesActions["liste"] = "listeRestos.php";
     $lesActions["detail"] = "detailResto.php";
     $lesActions["connexion"] = "connexion.php";

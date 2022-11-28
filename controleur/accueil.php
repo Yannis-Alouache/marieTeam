@@ -5,7 +5,7 @@ if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
 
 $titre = "Accueil";
 include "$racine/vue/header.html.php";
-include "$racine/vue/acceuil.html.php";
+include "$racine/vue/accueil.html.php";
 include "$racine/vue/footer.html.php";
 
 ?>

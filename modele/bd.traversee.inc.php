@@ -10,7 +10,7 @@
             $stmt->execute([$dateTraversee, $heure, $quantiteA, $quantiteB, $quantiteC, $codeLiaison, $codeBateau]);
 
         } catch (PDOException $e) {
-            return "Erreur ! : " . e->getMessage();
+            return "Erreur ! : " . $e->getMessage();
         }
 
         return "Succès ! : traversee ajouté à la base";

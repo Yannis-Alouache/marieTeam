@@ -16,7 +16,8 @@ if (isLoggedIn()) {
 } else {
     $titre = "Connexion";
     include "$racine/vue/header.html.php";
-    echo "<h1>CONNEXION</h1>";
+    include "$racine/vue/connexion.html.php";
+    include "$racine/vue/footer.html.php";
 }
 
 

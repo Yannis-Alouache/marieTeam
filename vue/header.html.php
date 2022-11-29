@@ -23,8 +23,6 @@
 </head>
 
 <body>
-    <!-- Preloader -->  
-
     <!-- ***** Search Form Area ***** -->
     <div class="dorne-search-form d-flex align-items-center">
         <div class="container">

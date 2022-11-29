@@ -76,19 +76,6 @@
             </div>
         </div>
         <!-- Hero Social Btn -->
-        <div class="hero-social-btn">
-            <div class="social-title d-flex align-items-center">
-                <h6>Follow us on Social Media</h6>
-                <span></span>
-            </div>
-            <div class="social-btns">
-                <a href="#"><i class="fa fa-linkedin" aria-haspopup="true"></i></a>
-                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-haspopup="true"></i></a>
-                <a href="#"><i class="fa fa-facebook" aria-haspopup="true"></i></a>
-            </div>
-        </div>
     </section>
     <!-- ***** Welcome Area End ***** -->
 

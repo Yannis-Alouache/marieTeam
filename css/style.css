@@ -16,7 +16,6 @@
 @import 'others/animate.css';
 @import 'others/magnific-popup.css';
 @import 'others/owl.carousel.min.css';
-@import 'others/font-awesome.min.css';
 @import 'others/pe-icon-7-stroke.css';
 
 /* Base CSS */
@@ -456,6 +455,7 @@ li {
     transition-duration: 700ms;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 0 30px;
+    background-color: #211836;
 }
 
 .sticky .header_area {

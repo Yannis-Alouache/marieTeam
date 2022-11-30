@@ -93,7 +93,7 @@ function connexion($mail, $mdp) {
             $_SESSION["mail"] = $user["mail"];
             $_SESSION["mdp"] = $user["mdp"];
             $_SESSION["username"] = $user["nom"]." ".$user["prenom"];
-            return $_SESSION;
+            return true;
         }
         else{
             return "Mauvais mot de passe";
@@ -105,18 +105,19 @@ function connexion($mail, $mdp) {
 }
 
 function deconnexion() {
-    if (isset($_SESSION)) {
-        unset($_SESSION["mail"]);
-        unset($_SESSION["mdp"]);
-        unset($_SESSION["username"]);
+    if (!isset($_SESSION)) {
+        session_start();
     }
+    unset($_SESSION["mail"]);
+    unset($_SESSION["mdp"]);
+    unset($_SESSION["username"]);
 }
 
 function isLoggedIn() {
     $isLogged = false;
 
     if (!isset($_SESSION)) {
-        return $isLogged;
+        session_start();
     }
 
     if (isset($_SESSION["mail"]) && isset($_SESSION["mdp"])) {

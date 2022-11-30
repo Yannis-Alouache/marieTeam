@@ -1,5 +1,13 @@
-    <div class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/hero-1.jpg)">
+    <div class="breadcumb-area bg-img bg-overlay">
     </div>
+    <?php
+        if ($message != "") {
+            echo "<div class='alert alert-danger' role='alert'>
+                $message
+            </div>";
+        }
+    ?>
+
  
  <!-- ***** Contact Area Start ***** -->
     <div class="dorne-contact-area container" id="contact">
@@ -9,10 +17,10 @@
                 <h4>Connexion</h4>
             </div>
             <div class="contact-form">
-                <form action="#">
+                <form action="./?action=connexion" method="POST">
                     <div class="row">
                         <div class="col-12">
-                            <input type="email" name="email" class="form-control" placeholder="Adresse Mail">
+                            <input type="email" name="mail" class="form-control" placeholder="Adresse Mail">
                         </div>
                         <div class="col-12">
                             <input type="password" name="password" class="form-control" placeholder="Mot de passe">

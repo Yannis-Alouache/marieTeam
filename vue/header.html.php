@@ -86,12 +86,20 @@
                             </div>
                             <!-- Signin btn -->
                             <div class="dorne-signin-btn">
-                                <a href="?action=connexion">Sign in  or Register</a>
+                                <?php
+                                    if ($isLoggedIn)
+                                        echo "<a href='?action=deconnexion'>Deconnexion</a>";
+                                    else
+                                        echo "<a href='?action=connexion'>Sign in  or Register</a>"
+                                ?>
                             </div>
                             <!-- Add listings btn -->
-                            <div class="dorne-add-listings-btn">
-                                <a href="#" class="btn dorne-btn">+ Add Listings</a>
-                            </div>
+                            <?php
+                                if ($isLoggedIn)
+                                    echo "<div class='dorne-add-listings-btn'>
+                                            <a href='#' class='btn dorne-btn'>Profil</a>
+                                        </div>";
+                            ?>
                         </div>
                     </nav>
                 </div>

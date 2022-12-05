@@ -7,6 +7,7 @@ function controleurPrincipal($action){
     $lesActions["detail"] = "detailResto.php";
     $lesActions["connexion"] = "connexion.php";
     $lesActions["deconnexion"] = "deconnexion.php";
+    $lesActions["inscription"] = "inscription.php";
     $lesActions["profil"] = "monProfil.php";
 
     

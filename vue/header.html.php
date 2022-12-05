@@ -90,7 +90,7 @@
                                     if ($isLoggedIn)
                                         echo "<a href='?action=deconnexion'>Deconnexion</a>";
                                     else
-                                        echo "<a href='?action=connexion'>Sign in  or Register</a>"
+                                        echo "<a href='?action=connexion'>Inscription ou connexion</a>"
                                 ?>
                             </div>
                             <!-- Add listings btn -->

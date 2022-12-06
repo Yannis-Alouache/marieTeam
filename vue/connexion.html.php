@@ -23,7 +23,10 @@
                             <input type="email" name="mail" class="form-control" placeholder="Adresse Mail">
                         </div>
                         <div class="col-12">
-                            <input type="password" name="password" class="form-control" placeholder="Mot de passe">
+                            <input type="password" name="password" class="form-control" style="margin-bottom: 0;" placeholder="Mot de passe">
+                        </div>
+                        <div class="col-12" style="margin-bottom: 30px;">
+                            <a href="./?action=inscription"><small>Vous n'avez pas de compte ?</small></a>
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn dorne-btn">Envoyer</button>

@@ -78,7 +78,6 @@ function createUser($mail, $mdp, $nom, $prenom) {
     } catch(PDOException $e){
         die("ERROR: Could not able to execute $sql. " . $e->getMessage());
     }
-    return "operation effectué";
 }
 
 

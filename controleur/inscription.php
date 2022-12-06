@@ -3,12 +3,13 @@ if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
     $racine="..";
 }
 
+include "$racine/modele/bd.utilisateur.inc.php";
 
-if (isset($_POST["mailU"]) && isset($_POST["mdpU"]) && isset($_POST["nom"]) && isset($_POST["prenom"])){
-    $mailU = $_POST["mailU"];
-    $mdpU = $_POST["mdpU"];
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-}
+$message = "";
 
+
+
+$isLoggedIn = isLoggedIn();
+include "$racine/vue/header.html.php";
+include "$racine/vue/inscription.html.php";
 ?>

@@ -22,10 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if(strlen($password) < 8 || !$number || !$uppercase || !$lowercase || !$specialChars) {
         $message = "Le mot de passe doit comporter au moins 8 caractères et doit contenir au moins un chiffre, une lettre majuscule, une lettre minuscule et un caractère spécial.";
+    } else {
+        $message = createUser($mail, $password, $name, $first_name);
     }
 }
+
 
 $isLoggedIn = isLoggedIn();
 include "$racine/vue/header.html.php";
 include "$racine/vue/inscription.html.php";
+
 ?>

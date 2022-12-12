@@ -22,24 +22,19 @@
                                 <h6>What are you looking for?</h6>
                                 <form action="#" method="get">
                                     <select class="custom-select">
-                                        <option selected>Your Destinations</option>
-                                        <option value="1">New York</option>
-                                        <option value="2">Latvia</option>
-                                        <option value="3">Dhaka</option>
-                                        <option value="4">Melbourne</option>
-                                        <option value="5">London</option>
+                                    <?php
+                                        foreach ($secteurs as &$secteur) {
+                                            echo "<option value='$secteur[id]'>$secteur[nomSecteur]</option>";
+                                        }
+                                    ?>
                                     </select>
+
                                     <select class="custom-select">
-                                        <option selected>All Catagories</option>
-                                        <option value="1">Catagories 1</option>
-                                        <option value="2">Catagories 2</option>
-                                        <option value="3">Catagories 3</option>
-                                    </select>
-                                    <select class="custom-select">
-                                        <option selected>Price Range</option>
-                                        <option value="1">$100 - $499</option>
-                                        <option value="2">$500 - $999</option>
-                                        <option value="3">$1000 - $4999</option>
+                                    <?php
+                                        foreach ($liaisons as &$liaison) {
+                                            echo "<option value='$secteur[codeLiaison]'>$liaison[portDepart] - $liaison[portArriver]</option>";
+                                        }
+                                    ?>
                                     </select>
                                     <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
                                 </form>

@@ -2,16 +2,21 @@
     include_once "bd.inc.php";
 
 
-    function get_sector_by_name($name) {
-        $sector = null;
+    function get_sector() {
+        $sector = array();
 
         try {
             $connexion = connexionPDO();
-            $query = "SELECT * FROM `secteur` where secteur.nomSecteur = ?";
+            $query = "SELECT * FROM secteur ";
             $stmt = $connexion->prepare($query);
-    
-            $stmt->execute([$name]);
-            $boat = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->execute();
+
+            $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            while ($ligne) {
+                $boat[] = $ligne;
+                $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+           // $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage();
             die();

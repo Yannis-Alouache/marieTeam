@@ -11,7 +11,6 @@ include "$racine/modele/bd.liaison.inc.php";
 $titre = "Accueil";
 
 $secteurs = get_sector();
-$liaisons = get_liaisons();
 
 
 $isLoggedIn = isLoggedIn();

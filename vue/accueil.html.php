@@ -21,18 +21,10 @@
                             <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                                 <h6>What are you looking for?</h6>
                                 <form action="#" method="get">
-                                    <select class="custom-select">
+                                    <select class="custom-select" style="width: 100%">
                                     <?php
                                         foreach ($secteurs as &$secteur) {
                                             echo "<option value='$secteur[id]'>$secteur[nomSecteur]</option>";
-                                        }
-                                    ?>
-                                    </select>
-
-                                    <select class="custom-select">
-                                    <?php
-                                        foreach ($liaisons as &$liaison) {
-                                            echo "<option value='$secteur[codeLiaison]'>$liaison[portDepart] - $liaison[portArriver]</option>";
                                         }
                                     ?>
                                     </select>

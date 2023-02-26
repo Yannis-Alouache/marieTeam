@@ -20,8 +20,8 @@
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                                 <h6>What are you looking for?</h6>
-                                <form action="#" method="get">
-                                    <select class="custom-select" style="width: 100%">
+                                <form action="?action=selectLiaison" method="POST">
+                                    <select class="custom-select" name="secteur_id" style="width: 100%">
                                     <?php
                                         foreach ($secteurs as &$secteur) {
                                             echo "<option value='$secteur[id]'>$secteur[nomSecteur]</option>";

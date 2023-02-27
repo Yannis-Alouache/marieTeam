@@ -6,7 +6,7 @@
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-10">
                     <div class="hero-content">
-                        <h2>MarieTeam est une compagnie de transports maritimes</h2>
+                        <h2>MarieTeam la compagnie de transports maritimes par excelence</h2>
                         <h4>Nous vous assurons la desserte maritime de nombreux secteurs.</h4>
                     </div>
                     <!-- Hero Search Form -->
@@ -430,7 +430,7 @@
     </section>
     <!-- ***** Features Restaurant Area End ***** -->
 
-    <!-- ***** Features Events Area Start ***** -->
+    <!-- ***** Features Events Area Start ***** --
     <section class="dorne-features-events-area bg-img bg-overlay-9 section-padding-100-50" style="background-image: url(img/bg-img/hero-3.jpg)">
         <div class="container">
             <div class="row">

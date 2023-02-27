@@ -10,6 +10,7 @@ function controleurPrincipal($action){
     $lesActions["inscription"] = "inscription.php";
     $lesActions["profil"] = "monProfil.php";
     $lesActions["selectLiaison"] = "selectLiaison.php";
+    $lesActions["contact"] = "contact.php";
 
     
     if (array_key_exists ( $action , $lesActions )){

@@ -39,5 +39,26 @@
         return $resultat;
     }
 
+    function get_traverse_from_date_and_liaison_id($date, $liaisonId) {
+        $resultat = array();
+
+        try {
+            $connexion = connexionPDO();
+            $query = "SELECT * FROM traversee where traversee.dateTraversee = ? and traversee.codeLiaison = ?";
+            $stmt = $connexion->prepare($query);
+            $stmt->execute([$date, $liaisonId]);
+    
+            $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
 
 ?>

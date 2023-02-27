@@ -1,34 +1,34 @@
  
 
     <!-- ***** Welcome Area Start ***** -->
-    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(img/bg-img/hero-1.jpg);">
+    <section class="dorne-welcome-area bg-img bg-overlay" style="background-image: url(img/bg-img/bg-image.png); background-position: bottom 50%;">
         <div class="container h-100">
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12 col-md-10">
                     <div class="hero-content">
-                        <h2>Selectionnez une liaison</h2>
-                        <h4>This is the best guide of your city</h4>
+                    <h2>MarieTeam est une compagnie de transports maritimes</h2>
+                    <h4>Nous vous assurons la desserte maritime de nombreux secteurs.</h4>
                     </div>
                     <!-- Hero Search Form -->
                     <div class="hero-search-form">
                         <!-- Tabs -->
                         <div class="nav nav-tabs" id="heroTab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true">Places</a>
-                            <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a>
+                            <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true">Liaison</a>
                         </div>
                         <!-- Tabs Content -->
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
-                                <h6>What are you looking for?</h6>
-                                <form action="#" method="post">
-                                    <select class="custom-select" style="width: 100%">
+                                <h6>Selectionnez la liaison et la date</h6>
+                                <form action="?action=traverse" method="post">
+                                    <select class="custom-select" name="liaisonSelect">
                                     <?php
                                         foreach ($liaisons as &$liaison) {
-                                            echo "<option value='0'>$liaison[portDepart] - $liaison[portArriver]</option>";
+                                            echo "<option value=$liaison[codeLiaison]>$liaison[portDepart] - $liaison[portArriver]</option>";
                                         }
                                     ?>
                                     </select>
-                                    <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
+                                    <input type="date" class="input" name="date"/>
+                                    <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Recherchez</button>
                                 </form>
                             </div>
                             <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">

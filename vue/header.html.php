@@ -48,7 +48,7 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="?action=defaut"><img src="img/core-img/logo.png" alt=""></a>
+                        <a class="navbar-brand" href="?action=defaut"><img src="img/core-img/logo.png" width="100" alt=""></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
                         <!-- Nav -->
                         <div class="collapse navbar-collapse" id="dorneNav">
@@ -80,10 +80,6 @@
                                     <a class="nav-link" href="contact.html">Contact</a>
                                 </li>
                             </ul>
-                            <!-- Search btn -->
-                            <div class="dorne-search-btn">
-                                <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
-                            </div>
                             <!-- Signin btn -->
                             <div class="dorne-signin-btn">
                                 <?php

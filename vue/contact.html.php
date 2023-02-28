@@ -1,8 +1,8 @@
 <div class="breadcumb-area bg-img bg-overlay"></div>
     <?php
-        if ($message != "") {
+        if ($alertMessage != "") {
             echo "<div class='alert alert-danger' role='alert'>
-                $message
+                $alertMessage
             </div>";
         }
     ?>
@@ -18,7 +18,7 @@
                 <p>L'équipe MarieTeam met tout en oeuvre pour répondre à vos attentes et vous accompagner dans vos projets</p>
             </div>
             <div class="contact-form">
-                <form action="./?action=contact" method="POST">
+                <form action="?action=contact" method="POST">
                     <div class="row">
                         <div class="col-12">
                             <input type="email" name="mail" class="form-control" placeholder="Adresse Mail">

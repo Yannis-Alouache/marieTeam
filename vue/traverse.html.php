@@ -36,6 +36,7 @@
 
                             <?php
                                 foreach ($traversees as &$traversee) {
+                                    echo "<form action='?action=reservation' method='POST'>";
                                     echo "<tr>";
                                         echo "<th scope='row'>$traversee[codeTraversee]</th>";
                                         echo "<td>$traversee[heure]</td>";
@@ -43,8 +44,9 @@
                                         echo "<td>$traversee[quantitePassagerA]</td>";
                                         echo "<td>$traversee[quantitePassagerB]</td>";
                                         echo "<td>$traversee[quantitePassagerC]</td>";
-                                        echo "<td><button type='button' class='btn btn-primary'>Réservez</button></td>";
+                                        echo "<td><input type='submit' value='Reservez' class='btn btn-primary' /></td>";
                                     echo "</tr>";
+                                    echo "<form>";
                                 }
                             ?>
 

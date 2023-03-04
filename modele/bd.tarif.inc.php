@@ -37,6 +37,27 @@
         return $resultat;
     }
 
+    function get_tarifs_by_date_and_liaison($date, $liaisonId) {
+        $resultat = array();
+
+        try {
+            $connexion = connexionPDO();
+            $query = "SELECT type_passager.id, type_passager.libelle, tarif.prix FROM tarif, type_passager WHERE tarif.codeLiaison = ? and tarif.periodeDebut <= ? and tarif.periodeFin >= ? and type_passager.id = tarif.codeTypePassager ORDER BY type_passager.id";
+            $stmt = $connexion->prepare($query);
+            $stmt->execute([$liaisonId, $date, $date]);
+    
+            $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
 
 
 ?>

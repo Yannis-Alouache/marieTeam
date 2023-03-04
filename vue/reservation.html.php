@@ -19,7 +19,7 @@
                 <h4>Reservation</h4>
             </div>
             <div class="contact-form">
-                <form action="./?action=inscription" method="POST">
+                <form action="./?action=reservation" method="POST">
                     <div class="row">
 
                         <!--<div class="col-12">
@@ -27,11 +27,36 @@
                         </div>-->
 
                         <div class="col-12">
-                            <input type="text" name="name" class="form-control" placeholder="Nom">
+                            <input type="text" name="lastName" class="form-control" placeholder="Nom">
+                        </div>
+
+                        <p style="width: 100%"><?php echo("CodeTraversee => ".$traverseId) ?></p>
+                        <p style="width: 100%"><?php echo("CodeUtilisateur =>".$codeUtilisateur) ?></p>
+                        <p style="width: 100%"><?php echo("liaisonId =>".$liaisonId) ?></p>
+                        <p style="width: 100%"><?php echo("Date =>".$date) ?></p>
+
+
+                        <p style="width: 100%"><?php if (isset($lastName)) echo("Nom => ".$lastName) ?></p>
+                        <p style="width: 100%"><?php if (isset($firstName)) echo("Prénom =>".$firstName) ?></p>
+                        <p style="width: 100%"><?php if (isset($address)) echo("Adresse => ".$address) ?></p>
+                        <p style="width: 100%"><?php if (isset($codePostal)) echo("CodePostal =>".$codePostal) ?></p>
+                        <p style="width: 100%"><?php if (isset($city)) echo("Ville => ".$city) ?></p>
+
+                        <p style="width: 100%"><?php if (isset($lastName)) echo("Nombre d'adulte => ".$a1) ?></p>
+                        <p style="width: 100%"><?php if (isset($firstName)) echo("Nombre Junior 8 à 18 ans =>".$a2) ?></p>
+                        <p style="width: 100%"><?php if (isset($address)) echo("Nombre Enfant 0 à 7 ans => ".$a3) ?></p>
+                        <p style="width: 100%"><?php if (isset($codePostal)) echo("Nombre Voiture inférieur à 4 m =>".$b1) ?></p>
+                        <p style="width: 100%"><?php if (isset($city)) echo("Nombre Voiture inférieur à 5 m => ".$b2) ?></p>
+                        <p style="width: 100%"><?php if (isset($city)) echo("Nombre Fourgon => ".$c1) ?></p>
+                        <p style="width: 100%"><?php if (isset($city)) echo("Nombre Camping Car => ".$c2) ?></p>
+                        <p style="width: 100%"><?php if (isset($city)) echo("Camion => ".$c3) ?></p>
+
+                        <div class="col-12">
+                            <input type="text" name="firstName" class="form-control" placeholder="Prenom">
                         </div>
 
                         <div class="col-12">
-                            <input type="text" name="first_name" class="form-control" placeholder="Prenom">
+                            <input type="text" name="address" class="form-control" placeholder="Adresse">
                         </div>
 
                         <div class="col-12">
@@ -39,8 +64,12 @@
                         </div>
 
                         <div class="col-12">
-                            <input type="text" name="country" class="form-control" placeholder="Ville">
+                            <input type="text" name="city" class="form-control" placeholder="Ville">
                         </div>
+
+                        <input type="hidden" name="traverseId" value="<?php $traverseId ?>" />
+
+
 
                         <div class="col-12">
 
@@ -54,46 +83,15 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr>                                        
-                                        <td>Adulte</td>
-                                        <td>20.00</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Junior 8 à 18 ans</td>
-                                        <td>13.10</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Enfant 0 à 7 ans</td>
-                                        <td>7.00</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Voiture inférieur à 4 m </td>
-                                        <td>95.00</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Voiture inférieur à 5 m</td>
-                                        <td>142.00</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fourgon</td>
-                                        <td>208.00</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Camping Car</td>
-                                        <td>226.00</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Camion</td>
-                                        <td>295.00</td>
-                                        <td><input type="text" name="quantité" class="form-control" placeholder="0"></td>
-                                    </tr>
+                                    <?php
+                                        foreach ($tarifs as &$tarif) {
+                                            echo '<tr>                                        
+                                                    <td>'. $tarif["libelle"] .'</td>
+                                                    <td>'. $tarif["prix"] .'</td>
+                                                    <td><input type="number" min="0" name="' . $tarif["id"] . '" class="form-control" value="0"></td>
+                                                </tr>';
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

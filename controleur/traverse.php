@@ -15,9 +15,17 @@ $titre = "Accueil";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset( $_POST['liaisonSelect'])) {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION["liaisonId"] = $_POST['liaisonSelect'];
         $liaison = $_POST['liaisonSelect'];
     }
     if (isset( $_POST['date'])) {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION["date"] = $_POST['date'];
         $date = $_POST['date'];
     }
 

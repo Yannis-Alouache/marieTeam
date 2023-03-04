@@ -1,12 +1,7 @@
- 
 
-    <!-- ***** Welcome Area Start ***** -->
-    <!-- ***** Welcome Area End ***** -->
 
-    <!-- ***** About Area Start ***** -->
-    <!-- ***** About Area End ***** -->
 
-    <!-- ***** Features Destinations Area Start ***** -->
+
     <section class="dorne-features-destinations-area">
         <div class="container">
             <div class="row">
@@ -34,9 +29,8 @@
                         </thead>
                         <tbody>
 
-                            <?php
-                                foreach ($traversees as &$traversee) {
-                                    echo "<form action='?action=reservation' method='POST'>";
+                        <?php
+                            foreach ($traversees as &$traversee) {
                                     echo "<tr>";
                                         echo "<th scope='row'>$traversee[codeTraversee]</th>";
                                         echo "<td>$traversee[heure]</td>";
@@ -44,11 +38,15 @@
                                         echo "<td>$traversee[quantitePassagerA]</td>";
                                         echo "<td>$traversee[quantitePassagerB]</td>";
                                         echo "<td>$traversee[quantitePassagerC]</td>";
-                                        echo "<td><input type='submit' value='Reservez' class='btn btn-primary' /></td>";
+                                        echo "<td>";
+                                            echo "<form action='?action=reservation' method='POST'>";
+                                                echo "<input type='hidden' name='traverseId' value='$traversee[codeTraversee]' />";
+                                                echo "<input name='traverseeSubmitBtn' type='submit' value='Reservez' class='btn btn-primary'/>";
+                                            echo "</form>";
+                                        echo "</td>";
                                     echo "</tr>";
-                                    echo "<form>";
-                                }
-                            ?>
+                            }
+                        ?>
 
                         </tbody>
                     </table>

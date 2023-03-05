@@ -1,15 +1,13 @@
 
 
 <div class="breadcumb-area bg-img bg-overlay"></div>
-    <!--
-        <?php
+    <?php
         if ($message != "") {
             echo "<div class='alert alert-danger' role='alert'>
                 $message
             </div>";
         }
     ?>
-    -->
 
  
     <div class="dorne-contact-area container" id="contact">
@@ -28,8 +26,9 @@
 
                         <div class="col-12">
                             <input type="text" name="lastName" class="form-control" placeholder="Nom">
-                        </div>
+                        </div>  
 
+                    <!-- 
                         <p style="width: 100%"><?php echo("CodeTraversee => ".$traverseId) ?></p>
                         <p style="width: 100%"><?php echo("CodeUtilisateur =>".$codeUtilisateur) ?></p>
                         <p style="width: 100%"><?php echo("liaisonId =>".$liaisonId) ?></p>
@@ -50,6 +49,12 @@
                         <p style="width: 100%"><?php if (isset($city)) echo("Nombre Fourgon => ".$c1) ?></p>
                         <p style="width: 100%"><?php if (isset($city)) echo("Nombre Camping Car => ".$c2) ?></p>
                         <p style="width: 100%"><?php if (isset($city)) echo("Camion => ".$c3) ?></p>
+                        <p style="width: 100%"><?php if (isset($totalPrice)) echo("Prix Total => ".$totalPrice) ?></p>
+                        <p style="width: 100%"><?php if (isset($totalPrice)) echo("Message => ".$message) ?></p>
+                        <p style="width: 100%"><?php if (isset($passenger)) var_dump($passenger) ?></p>
+                    -->
+
+
 
                         <div class="col-12">
                             <input type="text" name="firstName" class="form-control" placeholder="Prenom">

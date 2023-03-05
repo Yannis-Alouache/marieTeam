@@ -5,11 +5,11 @@ if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
 
 include "$racine/modele/bd.utilisateur.inc.php";
 include "$racine/modele/bd.tarif.inc.php";
+include "$racine/modele/bd.reservation.inc.php";
+include "$racine/modele/bd.passenger.inc.php";
 
 
 $message = "";
-
-
 $isLoggedIn = isLoggedIn();
 
 if (!$isLoggedIn) {
@@ -70,6 +70,31 @@ else {
         }
         if (isset($_POST["C3"])) {
             $c3 = $_POST["C3"];
+        }
+
+        if (isset($a1, $a2, $a3, $b1, $b2, $c1, $c2, $c3)) {
+            $passenger = array();
+            $quantityForEachPassenger = array($a1, $a2, $a3, $b1, $b2, $c1, $c2, $c3);
+            $totalPrice = 0;
+    
+            for ($i=0; $i < count($quantityForEachPassenger); $i++) { 
+                $totalPrice += $quantityForEachPassenger[$i] * $tarifs[$i]["prix"];
+                if ($quantityForEachPassenger[$i] > 0) {
+                    array_push($passenger, array("id" => $tarifs[$i]["id"], "quantite" => $quantityForEachPassenger[$i]));
+                }
+            }
+
+            $message = create_reservation(
+                $lastName,
+                $firstName,
+                $address,
+                $codePostal,
+                $city,
+                $traverseId,
+                $codeUtilisateur,
+                $totalPrice
+            );
+            create_passenger($passenger);
         }
     }
 

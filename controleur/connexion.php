@@ -13,9 +13,7 @@ if  (isset($_POST["mail"]) && isset($_POST["password"])){
 if (isLoggedIn()) {
     $titre = "Accueil";
     $isLoggedIn = isLoggedIn();
-    include "$racine/vue/header.html.php";
-    include "$racine/vue/accueil.html.php";
-    include "$racine/vue/footer.html.php";
+    header('Location: http://localhost/marieTeam/?action=defaut');
 } else {
     $titre = "Connexion";
     $isLoggedIn = isLoggedIn();

@@ -89,6 +89,7 @@ function connexion($mail, $mdp) {
             if (!isset($_SESSION)) {
                 session_start();
             }
+            $_SESSION["id"] = $user["id"];
             $_SESSION["mail"] = $user["mail"];
             $_SESSION["mdp"] = $user["mdp"];
             $_SESSION["username"] = $user["nom"]." ".$user["prenom"];

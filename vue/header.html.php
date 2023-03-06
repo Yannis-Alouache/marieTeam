@@ -90,12 +90,6 @@
                                 ?>
                             </div>
                             <!-- Add listings btn -->
-                            <?php
-                                if ($isLoggedIn)
-                                    echo "<div class='dorne-add-listings-btn'>
-                                            <a href='#' class='btn dorne-btn'>Profil</a>
-                                        </div>";
-                            ?>
                         </div>
                     </nav>
                 </div>

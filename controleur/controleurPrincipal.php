@@ -15,6 +15,8 @@ function controleurPrincipal($action){
     $lesActions["traverse"] = "traverse.php";
     $lesActions["admin"] = "adminPanel.php";
     $lesActions["adminAjouterLiaisons"] = "adminAjouterLiaisons.php";
+    $lesActions["adminModifierLiaisons"] = "adminModifierLiaisons.php";
+
     
     if (array_key_exists ( $action , $lesActions )){
         return $lesActions[$action];

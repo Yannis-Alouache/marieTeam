@@ -11,6 +11,7 @@ include "$racine/modele/bd.liaison.inc.php";
 $titre = "Admin";
 $isLoggedIn = isLoggedIn();
 $isAdmin = isAdmin();
+$pseudo = $_SESSION["username"];
 
 
 if (!$isLoggedIn)

@@ -18,4 +18,43 @@
 
         return 'Succès !  Réservation Enregistrer';
     }
+
+    function get_reservation_by_id($reservationId) {
+        $reservation = null;
+
+        try {
+            $connexion = connexionPDO();
+            $query = "SELECT * FROM reservation where codeReservation = ?";
+            $stmt = $connexion->prepare($query);
+    
+            $stmt->execute([$reservationId]);
+            $reservation = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $reservation;
+    }
+
+    function get_recap_by_id($reservationId) {
+        $reservation = null;
+
+        try {
+            $connexion = connexionPDO();
+            $query = "SELECT r.*, t.*, l.*, s.*
+            FROM reservation r
+            JOIN traversee t ON r.codeTraversee = t.codeTraversee
+            JOIN liaison l ON t.codeLiaison = l.codeLiaison
+            JOIN secteur s ON l.secteurId = s.id
+            WHERE r.codeReservation = ?";
+            $stmt = $connexion->prepare($query);
+    
+            $stmt->execute([$reservationId]);
+            $reservation = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $reservation;
+    }
 ?>

@@ -102,6 +102,7 @@
                         </div>
 
                         <div class="col-12">
+                        <form action="recapReservation.html.php" method="get" target="_blank">
                             <button type="submit" class="btn dorne-btn">Envoyer</button>
                         </div>
                     </div>

@@ -14,6 +14,8 @@ function controleurPrincipal($action){
     $lesActions["reservation"] = "reservation.php";
     $lesActions["traverse"] = "traverse.php";
     $lesActions["recapReservation"] = "recapReservation.php";
+    $lesActions["admin"] = "adminPanel.php";
+    $lesActions["adminAjouterLiaisons"] = "adminAjouterLiaisons.php";
     
     if (array_key_exists ( $action , $lesActions )){
         return $lesActions[$action];

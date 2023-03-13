@@ -80,7 +80,6 @@ function createUser($mail, $mdp, $nom, $prenom) {
     }
 }
 
-
 function connexion($mail, $mdp) {
     $user = getUtilisateurByMail($mail);
 
@@ -108,6 +107,7 @@ function deconnexion() {
     if (!isset($_SESSION)) {
         session_start();
     }
+    unset($_SESSION["id"]);
     unset($_SESSION["mail"]);
     unset($_SESSION["mdp"]);
     unset($_SESSION["username"]);
@@ -127,6 +127,18 @@ function isLoggedIn() {
         }
     }
     return $isLogged;
+}
+
+
+function isAdmin() {
+    $isLogged = isLoggedIn();
+    $isAdmin = false;
+
+    $user = getUtilisateurById($_SESSION["id"]);
+    if ($user["isAdmin"] === "1" && $isLogged)
+        $isAdmin = true;
+
+    return $isAdmin;
 }
 
 ?>

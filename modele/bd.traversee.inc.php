@@ -1,5 +1,6 @@
 <?php
     include_once "bd.inc.php";
+    include_once "bd.passenger.inc.php";
 
     function create_traversee($dateTraversee, $heure, $quantiteA, $quantiteB, $quantiteC, $codeLiaison, $codeBateau) {
         try {
@@ -58,6 +59,53 @@
             die();
         }
         return $resultat;
+    }
+
+    function updateQuantité($idReservation) {    
+        
+        try {
+            $connexion = connexionPDO();
+
+
+            //Recuperation des quantité
+            $sql = "SELECT quantite FROM passager WHERE passager.typePassager LIKE 'A%' AND passager.codeReservation = (?);";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute([$idReservation]);
+            $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $sql = "UPDATE traversee SET traversee.quantitePassagerA = traversee.quantitePassagerA - (?);"; 
+            $stmt = $connexion->prepare($sql); 
+            $stmt->execute([$quantiteAres['quantite']]);
+
+
+
+
+            $sql = "SELECT quantite FROM passager WHERE passager.typePassager LIKE 'B%' AND passager.codeReservation = (?);";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute([$idReservation]);
+            $quantiteBres = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $sql = "UPDATE traversee SET traversee.quantitePassagerB = traversee.quantitePassagerB - (?);"; 
+            $stmt = $connexion->prepare($sql); 
+            $stmt->execute([$quantiteBres['quantite']]);
+
+
+            
+
+            $sql = "SELECT quantite FROM passager WHERE passager.typePassager LIKE 'C%' AND passager.codeReservation = (?);";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute([$idReservation]);
+            $quantiteCres = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $sql = "UPDATE traversee SET traversee.quantitePassagerC = traversee.quantitePassagerC - (?);"; 
+            $stmt = $connexion->prepare($sql); 
+            $stmt->execute([$quantiteCres['quantite']]);
+
+
+        } catch (PDOException $e) {
+            return $e;
+        }
+        echo 'traversee A et B bien mis a jour';     
     }
 
 

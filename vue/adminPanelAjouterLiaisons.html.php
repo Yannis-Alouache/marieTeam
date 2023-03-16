@@ -82,7 +82,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="?action=statistique">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Visionner</span>
                 </a>

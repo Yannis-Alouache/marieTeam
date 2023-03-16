@@ -41,7 +41,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="?action=admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -80,8 +80,8 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="?action=statistique">
+            <li class="nav-item active">
+                <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Visionner</span>
                 </a>
@@ -136,11 +136,67 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <?php 
+                        if (isset($message)) {
+                            echo '
+                                <div class="alert alert-dark" role="alert">'
+                                    . $message .
+                                '</div>
+                            ';
+                        }
+                    ?>
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Panel Administrateur MarieTeam</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Voir les statistiques</h1>
                     </div>
+
+
+                        <form action="./?action=statistique" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Date</label>
+                                    <input type="date" name="date" class="form-control"/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Choisir</button>
+
+                        </form>     
+                        
+                        
+                        <?php
+                            if (isset($stats_array)) {
+                                echo '
+                                    </br>
+                                    </br>
+                                    <div class="container">
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Code Réservation</th>
+                                                <th scope="col">Quantité de passager</th>
+                                                <th scope="col">Prix</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                    ';
+                                    for ($i=0; $i < count($stats_array); $i++) { 
+                                        echo '
+                                                <tr>
+                                                    <th scope="row">'. $stats_array[$i]["codeReservation"] .'</th>
+                                                    <td>'. $stats_array[$i]["quantitePassager"] .'</td>
+                                                    <td>'. $stats_array[$i]["prix"] .' €</td>
+                                                </tr>
+                                        ';
+                                    };
+                                echo '
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ';
+                            }
+                        ?>
+   
 
                 </div>
                 <!-- /.container-fluid -->

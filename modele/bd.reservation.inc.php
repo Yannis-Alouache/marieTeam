@@ -19,6 +19,37 @@
         return 'Succès !  Réservation Enregistrer';
     }
 
+    function get_stats($date) {
+        $resultat = array();
+
+        try {
+            $connexion = connexionPDO();
+            $query = 'SELECT prix, reservation.codeReservation, SUM(passager.quantite) as quantitePassager FROM reservation, passager, traversee WHERE reservation.codeTraversee = traversee.codeTraversee && traversee.dateTraversee = (?) && passager.codeReservation = reservation.codeReservation GROUP BY reservation.codeReservation';
+            $stmt = $connexion->prepare($query);
+            $stmt->execute([$date]);
+    
+            $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            while ($ligne) {
+                $resultat[] = $ligne;
+                $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+            }
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $resultat;
+    }
+
+    function get_reservation_by_date($date) {
+        $connexion = connexionPDO();
+
+        $sql = 'SELECT prix, reservation.codeReservation, passager.quantite, passager.typePassager FROM reservation, passager, traversee
+        WHERE reservation.codeTraversee = traversee.codeTraversee && traversee.dateTraversee = (?)';
+        $stmt = $connexion->prepare($sql);
+        $stmt->execute([$date]);
+
+    }
+
     function get_reservation_by_id($reservationId) {
         $reservation = null;
 

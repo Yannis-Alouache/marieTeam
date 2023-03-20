@@ -40,6 +40,22 @@
         return $resultat;
     }
 
+    function get_total_price($date) {
+        $total = null;
+        try {
+            $connexion = connexionPDO();
+            $query = 'SELECT SUM(prix) as price FROM reservation, traversee WHERE reservation.codeTraversee = traversee.codeTraversee && traversee.dateTraversee = (?);';
+            $stmt = $connexion->prepare($query);
+            $stmt->execute([$date]);
+            $total = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $total;
+    }
+
     function get_reservation_by_date($date) {
         $connexion = connexionPDO();
 

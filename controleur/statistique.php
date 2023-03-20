@@ -25,6 +25,7 @@ else {
         if (isset($_POST['date'])) {
             $date = $_POST['date'];
             $stats_array = get_stats($date);
+            $totalPrice = get_total_price($date);
         }
         else
             $message = "Merci de rentrer une date !";

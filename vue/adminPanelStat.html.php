@@ -187,14 +187,22 @@
                                                     <td>'. $stats_array[$i]["quantitePassager"] .'</td>
                                                     <td>'. $stats_array[$i]["prix"] .' €</td>
                                                 </tr>
+
+                                                
                                         ';
                                     };
                                 echo '
+                                                <tr>
+                                                    <th scope="row">Total : </th>
+                                                    <td></td>
+                                                    <td>'. $totalPrice["price"] .'€</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 ';
                             }
+                            
                         ?>
    
 

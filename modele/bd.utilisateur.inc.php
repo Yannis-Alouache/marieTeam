@@ -135,7 +135,7 @@ function isAdmin() {
     $isAdmin = false;
 
     $user = getUtilisateurById($_SESSION["id"]);
-    if ($user["isAdmin"] === "1" && $isLogged)
+    if ($user["isAdmin"] == "1" && $isLogged)
         $isAdmin = true;
 
     return $isAdmin;

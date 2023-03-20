@@ -57,22 +57,18 @@
                                     <a class="nav-link" href="?action=defaut">Accueil</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore <i class="fa fa-bars"></i></a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="index.html">Accueil</a>
-                                        <a class="dropdown-item" href="explore.html">Traversé</a>
-                                        <a class="dropdown-item" href="listing.html">Listing</a>
+                                        
                                         <a class="dropdown-item" href="single-listing.html">Single Listing</a>
                                         <a class="dropdown-item" href="?action=contact">Contact</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listings <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                         <a class="dropdown-item" href="index.html">Home</a>
-                                        <a class="dropdown-item" href="explore.html">Explore</a>
-                                        <a class="dropdown-item" href="listing.html">Listing</a>
-                                        <a class="dropdown-item" href="single-listing.html">Single Listing</a>
+                                      
                                         <a class="dropdown-item" href="?action=contact">Contact</a>
                                     </div>
                                 </li>

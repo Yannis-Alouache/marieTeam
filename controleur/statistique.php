@@ -6,6 +6,7 @@ if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
 include "$racine/modele/bd.utilisateur.inc.php";
 include "$racine/modele/bd.sector.inc.php";
 include "$racine/modele/bd.liaison.inc.php";
+include "$racine/modele/bd.reservation.inc.php";
 
 
 $titre = "Admin";
@@ -19,7 +20,18 @@ if (!$isLoggedIn)
 if (!$isAdmin)
     header("Location: http://localhost/marieTeam/?action=defaut");
 else {
-    include "$racine/vue/adminPanel.html.php";
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (isset($_POST['date'])) {
+            $date = $_POST['date'];
+            $stats_array = get_stats($date);
+            $totalPrice = get_total_price($date);
+        }
+        else
+            $message = "Merci de rentrer une date !";
+    }
+
+    include "$racine/vue/adminPanelStat.html.php";
 }
 
 ?>

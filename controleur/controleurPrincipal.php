@@ -13,8 +13,13 @@ function controleurPrincipal($action){
     $lesActions["contact"] = "contact.php";
     $lesActions["reservation"] = "reservation.php";
     $lesActions["traverse"] = "traverse.php";
+    $lesActions["recapReservation"] = "recapReservation.php";
     $lesActions["admin"] = "adminPanel.php";
     $lesActions["adminAjouterLiaisons"] = "adminAjouterLiaisons.php";
+    $lesActions["adminModifierLiaisons"] = "adminModifierLiaisons.php";
+    $lesActions["statistique"] = "statistique.php";
+
+
     
     if (array_key_exists ( $action , $lesActions )){
         return $lesActions[$action];

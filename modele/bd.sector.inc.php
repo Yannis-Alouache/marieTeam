@@ -22,6 +22,21 @@
             die();
         }
         return $boat;
+    }
+    function get_sector_name_by_id($id) {
+
+        try {
+            $connexion = connexionPDO();
+            $query = "SELECT nomSecteur FROM secteur WHERE secteur.id = (?)";
+            $stmt = $connexion->prepare($query);
+            $stmt->execute([$id]);
+
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $res;
     } 
 
 

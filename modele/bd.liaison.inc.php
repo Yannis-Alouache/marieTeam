@@ -62,4 +62,35 @@
         return $resultat;
     }
 
+    function get_liaison_by_id($liaisonId) {
+
+        try {
+            $connexion = connexionPDO();
+            $query = "SELECT * FROM liaison
+             where liaison.codeLiaison = (?)";
+            $stmt = $connexion->prepare($query);
+            $stmt->execute([$liaisonId]);
+    
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage();
+            die();
+        }
+        return $res;
+    }
+
+    function modify_liaison($liaisonId, $portDepart, $portArriver, $distance, $secteurId) {
+        try {
+            $connexion = connexionPDO();
+            $query = "UPDATE liaison SET portDepart = (?), portArriver = (?), distance = (?), secteurId = (?) where codeLiaison = (?)";
+            $stmt = $connexion->prepare($query);
+            $stmt->execute([$portDepart, $portArriver, $distance, $secteurId, $liaisonId]);
+
+        } catch (PDOException) {
+            return -1;
+        }
+        return 1;
+    }
+
 ?>

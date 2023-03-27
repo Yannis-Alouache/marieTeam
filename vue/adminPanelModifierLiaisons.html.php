@@ -41,7 +41,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="?action=admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -65,7 +65,7 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="?action=adminModifierLiaisons">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Modifier</span></a>
@@ -136,11 +136,75 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <?php 
+                        if (isset($message)) {
+                            echo '
+                                <div class="alert alert-dark" role="alert">'
+                                    . $message .
+                                '</div>
+                            ';
+                        }
+                    ?>
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Panel Administrateur MarieTeam</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Modifier une Liaison</h1>
                     </div>
+
+
+                        <form action="./?action=adminModifierLiaisons" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="inputEmail4">Liaison</label>
+                                    <select name="liaisonSelect" class="form-control" placeholder="selectionnez une liaison à modifier">
+                                        <option selected value="null"></option>
+                                        <?php 
+                                            foreach ($liaisons as &$liaison) {
+                                                echo '
+                                                    <option value=' . $liaison["codeLiaison"] .'>'. $liaison["portDepart"] . "-" . $liaison["portArriver"] .'</option>
+                                                ';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Choisir</button>
+
+                        </form>                  
+                        </br>
+                        </br>
+                        <form action="./?action=adminModifierLiaisons" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Port de Départ</label>
+                                    <input type="text" class="form-control" id="inputEmail4" name="portDepart" value='<?php if (isset($liaisonToModify["portDepart"])) echo $liaisonToModify["portDepart"]; ?>' placeholder="Port de Départ">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Port d'Arrivé</label>
+                                    <input type="text" class="form-control" id="inputPassword4" name="portArrive" value='<?php if (isset($liaisonToModify["portArriver"])) echo $liaisonToModify["portArriver"]; ?>' placeholder="Port d'Arrivé">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Distance en milles marin </label>
+                                <input type="number" step="0.1" min="0" class="form-control" id="inputEmail4" name="distance" value='<?php if (isset($liaisonToModify["distance"])) echo $liaisonToModify["distance"]; ?>' placeholder="0">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Secteur</label>
+                                <select id="inputState" name="secteurId" class="form-control">
+                                    <option selected value='<?php if (isset($liaisonToModify["secteurId"])) echo $liaisonToModify["secteurId"] ?>'><?php if (isset($liaisonToModify["secteurId"])) echo get_sector_name_by_id($liaisonToModify["secteurId"])["nomSecteur"] ?></option>
+                                    <?php 
+                                        foreach ($secteurs as &$secteur) {
+                                            echo '
+                                                <option value=' . $secteur["id"] .'>'. $secteur["nomSecteur"] .'</option>
+                                            ';
+                                        }
+                                    ?>
+                                </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Modifier</button>
+                        </form>
 
                 </div>
                 <!-- /.container-fluid -->

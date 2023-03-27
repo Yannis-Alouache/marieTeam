@@ -66,9 +66,10 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="?action=adminModifierLiaisons">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Modifier</span></a>
+                    <span>Modifier</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -81,7 +82,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="?action=statistique">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Visionner</span>
                 </a>
@@ -115,7 +116,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $pseudo  ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>

@@ -95,6 +95,7 @@ else {
                 $totalPrice
             );
             create_passenger($passenger);
+            header("Location: http://localhost/marieTeam/?action=recapReservation");
         }
     }
 

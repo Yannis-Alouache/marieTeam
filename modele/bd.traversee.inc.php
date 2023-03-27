@@ -90,7 +90,7 @@
             $stmt->execute([$quantiteBres['quantite']]);
 
 
-            
+
 
             $sql = "SELECT quantite FROM passager WHERE passager.typePassager LIKE 'C%' AND passager.codeReservation = (?);";
             $stmt = $connexion->prepare($sql);
@@ -106,6 +106,45 @@
             return $e;
         }
         echo 'traversee A et B bien mis a jour';     
+    }
+
+    function getQuantiteA($codeTraversee){
+        $connexion = connexionPDO();
+
+        //Recuperation des quantité
+        $sql = "SELECT quantitePassagerA FROM traversee  WHERE traversee.codeTraversee = (?)";
+        $stmt = $connexion->prepare($sql);
+        $stmt->execute([$codeTraversee]);
+        $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $quantiteAres;
+
+    }
+
+    function getQuantiteB($codeTraversee){
+        $connexion = connexionPDO();
+
+        //Recuperation des quantité
+        $sql = "SELECT quantitePassagerB FROM traversee  WHERE traversee.codeTraversee = (?)";
+        $stmt = $connexion->prepare($sql);
+        $stmt->execute([$codeTraversee]);
+        $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $quantiteAres;
+
+    }
+
+    function getQuantiteC($codeTraversee){
+        $connexion = connexionPDO();
+
+        //Recuperation des quantité
+        $sql = "SELECT quantitePassagerC FROM traversee  WHERE traversee.codeTraversee = (?)";
+        $stmt = $connexion->prepare($sql);
+        $stmt->execute([$codeTraversee]);
+        $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $quantiteAres;
+
     }
 
 

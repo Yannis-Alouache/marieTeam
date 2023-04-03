@@ -85,19 +85,51 @@ else {
                 }
             }
 
-            $message = create_reservation(
-                $lastName,
-                $firstName,
-                $address,
-                $codePostal,
-                $city,
-                $traverseId,
-                $codeUtilisateur,
-                $totalPrice
-            );
-            create_passenger($passenger);
-            updateQuantité($_SESSION["reservationId"]);
-            header("Location: http://localhost/marieTeam/?action=recapReservation");
+            $qa = 0;
+            $qb = 0;
+            $qc = 0;
+            $canMakeAReservation = true;
+
+            for ($i = 0; $i < count($passenger); $i++) {
+                if (str_contains($passenger[$i]["id"], "A"))
+                    $qa += (int) $passenger[$i]["quantite"];
+                else if (str_contains($passenger[$i]["id"], "B"))
+                    $qb += (int) $passenger[$i]["quantite"];
+                else if (str_contains($passenger[$i]["id"], "C"))
+                    $qc += (int) $passenger[$i]["quantite"];
+            }
+
+            if (getQuantiteA($_SESSION["traverseId"]) - $qa < 0) {
+                $canMakeAReservation = false;
+                $type = "A";
+            }
+            else if (getQuantiteA($_SESSION["traverseId"]) - $qb < 0) {
+                $canMakeAReservation = false;
+                $type = "B";
+            }
+            else if (getQuantiteA($_SESSION["traverseId"]) - $qb < 0) {
+                $canMakeAReservation = false;
+                $type = "C";
+            }
+            
+            if ($canMakeAReservation) {
+                $message = create_reservation(
+                    $lastName,
+                    $firstName,
+                    $address,
+                    $codePostal,
+                    $city,
+                    $traverseId,
+                    $codeUtilisateur,
+                    $totalPrice
+                );
+                create_passenger($passenger);
+                updateQuantité($_SESSION["reservationId"]);
+                header("Location: http://localhost/marieTeam/?action=recapReservation");
+            }
+            else {
+                $message = "Plus assez de places de type " . $type;
+            }
         }
     }
 

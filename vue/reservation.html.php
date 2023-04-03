@@ -91,7 +91,7 @@
                                     <?php
                                         foreach ($tarifs as &$tarif) {
                                             echo '<tr>                                        
-                                                    <td>'. $tarif["libelle"] .'</td>
+                                                    <td>'. $tarif["id"] . " - " . $tarif["libelle"] .'</td>
                                                     <td>'. $tarif["prix"] .'</td>
                                                     <td><input type="number" min="0" name="' . $tarif["id"] . '" class="form-control" value="0"></td>
                                                 </tr>';

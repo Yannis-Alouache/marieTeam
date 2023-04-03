@@ -120,7 +120,7 @@
         $stmt->execute([$codeTraversee]);
         $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $quantiteAres;
+        return $quantiteAres["quantitePassagerA"];
     }
 
     function getQuantiteB($codeTraversee){
@@ -132,7 +132,7 @@
         $stmt->execute([$codeTraversee]);
         $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $quantiteAres;
+        return $quantiteAres["quantitePassagerA"];
 
     }
 
@@ -145,7 +145,7 @@
         $stmt->execute([$codeTraversee]);
         $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $quantiteAres;
+        return $quantiteAres["quantitePassagerA"];
 
     }
 

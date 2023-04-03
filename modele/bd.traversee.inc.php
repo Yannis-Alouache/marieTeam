@@ -73,9 +73,11 @@
             $stmt->execute([$idReservation]);
             $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $sql = "UPDATE traversee SET traversee.quantitePassagerA = traversee.quantitePassagerA - (?);"; 
-            $stmt = $connexion->prepare($sql); 
-            $stmt->execute([$quantiteAres['quantite']]);
+            if ($quantiteAres) {
+                $sql = "UPDATE traversee SET traversee.quantitePassagerA = traversee.quantitePassagerA - (?) WHERE traversee.codeTraversee = (?)"; 
+                $stmt = $connexion->prepare($sql); 
+                $stmt->execute([$quantiteAres['quantite'], $_SESSION["traverseId"]]);
+            }
 
 
 
@@ -85,10 +87,11 @@
             $stmt->execute([$idReservation]);
             $quantiteBres = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $sql = "UPDATE traversee SET traversee.quantitePassagerB = traversee.quantitePassagerB - (?);"; 
-            $stmt = $connexion->prepare($sql); 
-            $stmt->execute([$quantiteBres['quantite']]);
-
+            if ($quantiteBres) {
+                $sql = "UPDATE traversee SET traversee.quantitePassagerB = traversee.quantitePassagerB - (?) WHERE traversee.codeTraversee = (?)"; 
+                $stmt = $connexion->prepare($sql); 
+                $stmt->execute([$quantiteBres['quantite'], $_SESSION["traverseId"]]);
+            }
 
 
 
@@ -97,15 +100,15 @@
             $stmt->execute([$idReservation]);
             $quantiteCres = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $sql = "UPDATE traversee SET traversee.quantitePassagerC = traversee.quantitePassagerC - (?);"; 
-            $stmt = $connexion->prepare($sql); 
-            $stmt->execute([$quantiteCres['quantite']]);
-
+            if ($quantiteCres) {
+                $sql = "UPDATE traversee SET traversee.quantitePassagerC = traversee.quantitePassagerC - (?) WHERE traversee.codeTraversee = (?)"; 
+                $stmt = $connexion->prepare($sql); 
+                $stmt->execute([$quantiteCres['quantite'], $_SESSION["traverseId"]]);
+            }
 
         } catch (PDOException $e) {
-            return $e;
-        }
-        echo 'traversee A et B bien mis a jour';     
+            return $e->getMessage();
+        }  
     }
 
     function getQuantiteA($codeTraversee){
@@ -118,7 +121,6 @@
         $quantiteAres = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $quantiteAres;
-
     }
 
     function getQuantiteB($codeTraversee){

@@ -7,6 +7,7 @@ include "$racine/modele/bd.utilisateur.inc.php";
 include "$racine/modele/bd.tarif.inc.php";
 include "$racine/modele/bd.reservation.inc.php";
 include "$racine/modele/bd.passenger.inc.php";
+include "$racine/modele/bd.traversee.inc.php";
 
 
 $message = "";
@@ -95,6 +96,7 @@ else {
                 $totalPrice
             );
             create_passenger($passenger);
+            updateQuantité($_SESSION["reservationId"]);
             header("Location: http://localhost/marieTeam/?action=recapReservation");
         }
     }
